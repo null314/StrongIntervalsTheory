@@ -1,0 +1,100 @@
+{
+  "main": {
+    "id": "585af9501711abc6",
+    "type": "split",
+    "children": [
+      {
+        "id": "da238cb086b63a78",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Глава 4. Обоснование/--+ Глава 4. Теория.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4ffa01712470badc",
+    "type": "split",
+    "children": [
+      {
+        "id": "be6ab8312ef94926",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "eddf4945e7f27a34",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "57f57703a6be8e1c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "част",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "8fcbb2f8245febbf",
+    "type": "split",
+    "children": [
+      {
+        "id": "9d7bb732125d2d04",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9a12c549583615bd",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Глава 4. Обоснование/--+ Глава 4. Теория.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "Глава 4. Обоснование/--+ Глава 4. Теория.md",
+    "Глава 3. Алгоритм/--+ Глава 3 . Алгоритм вычисления HitFactor.md",
+    "Глава X. Эффект глубины/Глава X. Эффект глубины.md",
+    "Глава X. Священный грааль/--+ Глава X. Священный грааль музыкальной индустрии.md",
+    "Глава X. Эффект глубины/Untitled.md",
+    "Глава X. Пирамида/--+ Глава X. Пирамида.md",
+    "Загрушки/Глава 8. Загрушка 2. Картинка - Продливаем ноту.md",
+    "Загрушки/Глава 8. Загрушка 1. Картинка - Синкопа.md",
+    "Загрушки/Глава 5. Загрушка 1. Картинка - Повизгивающая мелодия.md",
+    "Загрушки/Глава 3. Загрушка 2. Раскрашенная сигнатура.md"
+  ]
+}

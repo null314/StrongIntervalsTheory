@@ -1,0 +1,214 @@
+{
+  "main": {
+    "id": "08c546fa9729ed5e",
+    "type": "split",
+    "children": [
+      {
+        "id": "e5423463ee8d1bdb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "084e15baca919562",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Music/Прогресс.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Прогресс"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ebdbf512deabe87b",
+    "type": "split",
+    "children": [
+      {
+        "id": "3ea3764febf5c2b8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "521e33fdde80f1e2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "6fa97c335f1ece00",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "e7172ea34be68bc4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b78d63c62dfb8993",
+    "type": "split",
+    "children": [
+      {
+        "id": "414d14fe9a8e2e15",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "39a4e4fa0a3a8ec7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки"
+            }
+          },
+          {
+            "id": "04a9cdb338d11625",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки"
+            }
+          },
+          {
+            "id": "bf9307f31666c727",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "c4a0aa6310bb1a27",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Все свойства"
+            }
+          },
+          {
+            "id": "524bc4b253f78d1a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
+      "bases:Создать новую базу": false
+    }
+  },
+  "active": "084e15baca919562",
+  "lastOpenFiles": [
+    "Music/Символы.md",
+    "Music/Catalog.md",
+    "Music/ToDo.md",
+    "Music/Общий план.md",
+    "Music/Прогресс.md",
+    "Music/Книга . Теория Сильных Интервалов.md",
+    "Книга . Теория Сильных Интервалов (20260815).pdf",
+    "Книга . Теория Сильных Интервалов_20260815.pdf",
+    "Книга . Теория Сильных Интервалов.pdf",
+    "Полный текст.pdf",
+    "Music/Глава 7. Прима/Глава 7 -++. Прима.md",
+    "Music/Глава 11. Заключение/Глава 11 +++. Заключение.md",
+    "Music/Глава 10. Мифы/Глава 10 -++. Мифы.md",
+    "Полный текст 2.pdf",
+    "Music/Глава X. Эффект глубины/Глава X. Эффект глубины.md",
+    "Music/Глава X. Священный грааль/Глава X --+. Священный грааль музыкальной индустрии.md",
+    "Music/Глава X. Пирамида/Глава X --+. Пирамида.md",
+    "Music/Глава X. Пирамида/5ea773d8-ff92-421f-bb7a-6b6ade6de934.jpg",
+    "Music/Глава X. Пирамида/0bd6bd27-2fd4-477f-9628-08879c20457d.jpg",
+    "Music/Глава 9. Советы/Глава 9 ---. Советы.md",
+    "Music/Глава 8. Техническая часть/Глава 8 --+. Техническая часть.md",
+    "Music/Глава 6. Речевые привычки ваш враг/Глава 6 +++. Речевые привычки - ваш главный враг.md",
+    "Music/Глава 5. Повизгивающие мелодии/Глава 5 -++. Повизгивающие мелодии.md",
+    "Music/Глава 3. Алгоритм/Глава 3 --+. Алгоритм вычисления HitFactor.md",
+    "Music/Глава 2/Глава 2 -++. Сильные интервалы. Сигнатура.md",
+    "Music/Глава 4. Обоснование/Глава 4 --+. Теория.md",
+    "Music/Глава 1. Вступление/Глава 1 -++.md",
+    "Music/Глава 8. Техническая часть/pic_8_2.bmp"
+  ]
+}
