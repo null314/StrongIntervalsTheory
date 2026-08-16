@@ -3,11 +3,11 @@
 
 # Содержимое
 
-- C# . StrongIntervalTheory
+- C# . StrongIntervalTheory <br>
 	Программа, визуализирующая сильные интервалы и вычисляющая HitFactor
 	
-- Catalog 
+- Catalog <br>
 	Каталог с песнями для программы "StrongIntervalTheory"
 	
-- Obsidian
+- Obsidian <br>
 	Здесь я пишу книгу
