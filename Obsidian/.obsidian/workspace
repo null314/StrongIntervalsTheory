@@ -1,0 +1,100 @@
+{
+  "main": {
+    "id": "5623c4f45dcf986b",
+    "type": "split",
+    "children": [
+      {
+        "id": "4765efd0f92a96b1",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Music/Книга . Теория Сильных Интервалов.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "eb908bac9cdcf1f4",
+    "type": "split",
+    "children": [
+      {
+        "id": "3e3bbdc337ae2183",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2be074c68eff9a3a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "cfd722d6430ec900",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f5aec379002aeb98",
+    "type": "split",
+    "children": [
+      {
+        "id": "28ef798ed49e8a12",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dee2fad11814dee4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Music/Книга . Теория Сильных Интервалов.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "Music/Книга . Теория Сильных Интервалов.md",
+    "Music/Глава 6. Речевые привычки ваш враг/Глава 6 +++. Речевые привычки - ваш главный враг.md",
+    "Music/Глава X. Пирамида/Глава X --+. Пирамида.md",
+    "Music/Глава X. Пирамида/0bd6bd27-2fd4-477f-9628-08879c20457d.jpg",
+    "Music/Глава 13. Заключение/Глава 11 +++. Заключение.md",
+    "Music/Глава 12. Теории успеха/Глава X --+. Теории успеха.md",
+    "Music/Глава 11. Мифы/Глава 10 -++. Мифы.md",
+    "Music/Глава 10. Советы/Глава 9 ---. Советы.md",
+    "Music/Глава 9. Техническая часть/pic_8_2.bmp",
+    "Music/Глава 9. Техническая часть/Глава 8 --+. Техническая часть.md"
+  ]
+}
