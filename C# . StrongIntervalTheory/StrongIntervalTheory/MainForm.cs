@@ -17,8 +17,10 @@ namespace StrongIntervalTheoryLib
 {
 	public partial class MainForm : Form
 	{
+		private const double ZoomMult = 0.001;
 		private const string FileName = "test2.midi";
 
+		private readonly BpmSignatureForm BpmSignatureForm;
 
 		private const int PianoWidth = 100;
 		private const int TimelineTop= 70;
@@ -50,7 +52,7 @@ namespace StrongIntervalTheoryLib
 
 		private Interval SelectedInterval;
 
-		ProjectJson ProjectJson;
+		public ProjectJson ProjectJson;
 
 		private float MixerMainVolume = 1;
 		private float MixerPianoVolume = 1;
@@ -63,7 +65,15 @@ namespace StrongIntervalTheoryLib
 		{
 			get
 			{
-				return (float)(BarWidthConst * Math.Exp(ZoomInt * 0.001));
+				return (float)(BarWidthConst * Math.Exp(ZoomInt * ZoomMult));
+			}
+		}
+
+		private float BeatWidth
+		{
+			get
+			{
+				return (float)(BarWidthConst * Math.Exp(ZoomInt * ZoomMult) / ProjectJson.Track.BeatPerBar);
 			}
 		}
 
@@ -73,6 +83,8 @@ namespace StrongIntervalTheoryLib
 		public MainForm()
 		{
 			InitializeComponent();
+
+			BpmSignatureForm = new BpmSignatureForm(this);
 
 			this.MouseWheel += Form_MouseWheel;
 			MouseController.InitLeftDrag(OnLeftDragStart, OnLeftDragProcess, OnLeftDragProcess);
@@ -131,16 +143,16 @@ namespace StrongIntervalTheoryLib
 
 			foreach (var i in ProjectJson.Track.BarCount.Traverse())
 			{
-				gr.DrawLine(Pens.Black,
-					new PointF(PianoWidth + (i + 1) * BarWidth, TimelineTop ),
-					new PointF(PianoWidth + (i + 1) * BarWidth, TimelineHeight + NoteCount * NoteHeight));
-
-				foreach (var o in (ProjectJson.Track.BeatPerBar - 1).Traverse().Select(o => o + 1))
+				foreach (var o in (ProjectJson.Track.BeatPerBar+1).Traverse())
 				{
 					gr.DrawLine(weakBeatPen,
 						new PointF(PianoWidth + i * BarWidth + o * beatWidth, TimelineHeight),
 						new PointF(PianoWidth + i * BarWidth + o * beatWidth, TimelineHeight + NoteCount * NoteHeight));
 				}
+
+				gr.DrawLine(Pens.Black,
+					new PointF(PianoWidth + (i) * BarWidth + ProjectJson.Track.StartBeatShift * beatWidth, TimelineTop),
+					new PointF(PianoWidth + (i) * BarWidth + ProjectJson.Track.StartBeatShift * beatWidth, TimelineHeight + NoteCount * NoteHeight));
 			}
 
 			gr.DrawLine(new Pen(Color.Blue, 1),
@@ -169,23 +181,23 @@ namespace StrongIntervalTheoryLib
 				var brush = Brushes.DarkGreen;
 				var pen = Pens.DarkGreen;
 
-				if (PlayBeatPosition > n.GetStartBar(ProjectJson.Track.TickByBar) * ProjectJson.Track.BeatPerBar &&
-					PlayBeatPosition < n.GetEndBar(ProjectJson.Track.TickByBar) * ProjectJson.Track.BeatPerBar)
+				if (PlayBeatPosition > n.GetStartBeat(ProjectJson.Track.TickByBeat) &&
+					PlayBeatPosition < n.GetEndBeat(ProjectJson.Track.TickByBeat))
 				{
 					brush = Brushes.LightGreen;
 					pen = Pens.LightGreen;
 				}
 
 				gr.FillRectangle(brush,
-					PianoWidth + n.GetStartBar(ProjectJson.Track.TickByBar) * BarWidth + 2,
+					PianoWidth + n.GetStartBeat(ProjectJson.Track.TickByBeat) * BeatWidth + 2,
 					TimelineHeight + notePosition * NoteHeight + 2,
-					(n.GetEndBar(ProjectJson.Track.TickByBar) - n.GetStartBar(ProjectJson.Track.TickByBar)) * BarWidth - 3,
+					(n.GetEndBeat(ProjectJson.Track.TickByBeat) - n.GetStartBeat(ProjectJson.Track.TickByBeat)) * BeatWidth - 3,
 					NoteHeight - 4);
 
 				gr.DrawRectangle(pen,
-					PianoWidth + n.GetStartBar(ProjectJson.Track.TickByBar) * BarWidth + 2,
+					PianoWidth + n.GetStartBeat(ProjectJson.Track.TickByBeat) * BeatWidth + 2,
 					TimelineHeight + notePosition * NoteHeight + 2,
-					(n.GetEndVirtualBar(ProjectJson.Track.TickByBar) - n.GetStartBar(ProjectJson.Track.TickByBar)) * BarWidth - 3,
+					(n.GetEndVirtualBeat(ProjectJson.Track.TickByBeat) - n.GetStartBeat(ProjectJson.Track.TickByBeat)) * BeatWidth - 3,
 					NoteHeight - 4);
 			}
 			if (ProjectJson.FirstNote >= 0)
@@ -572,9 +584,16 @@ namespace StrongIntervalTheoryLib
 				StopButton.Enabled = true;
 				PlayButton.Enabled = true;
 				PauseButton.Enabled = true;
+
+				RefreshBpmLabel();
 			}
 
 			Invalidate();
+		}
+
+		private void RefreshBpmLabel()
+		{
+			BpmLabel.Text = string.Format("BPM: {0}, {1}/4", (int)ProjectJson.Track.Bpm, ProjectJson.Track.BeatPerBar);
 		}
 
 		private void openMidiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -591,6 +610,62 @@ namespace StrongIntervalTheoryLib
 			}
 
 			Invalidate();
+		}
+
+		private void button1_Click_1(object sender, EventArgs e)
+		{
+			if(ProjectJson != null)
+				BpmSignatureForm.ShowForm();
+		}
+
+
+		public void ShiftRight()
+		{
+			ProjectJson.Track.ShiftRight();
+			Invalidate();
+		}
+
+		public void ShiftLeft()
+		{
+			ProjectJson.Track.ShiftLeft();
+			Invalidate();
+		}
+
+		public void SignatureDouble()
+		{
+			ProjectJson.Track.SignatureDouble();
+			MultZoom(2);
+			Invalidate();
+			RefreshBpmLabel();
+		}
+
+		public void SignatureHalf()
+		{
+			ProjectJson.Track.SignatureHalf();
+			MultZoom(0.5f);
+			Invalidate();
+			RefreshBpmLabel();
+		}
+
+		private void MultZoom(float mult)
+		{
+			ZoomInt += (int)(Math.Log(mult) / ZoomMult);
+		}
+
+		public void BpmDouble()
+		{
+			ProjectJson.Track.BpmDouble();
+			MultZoom(0.5f);
+			Invalidate();
+			RefreshBpmLabel();
+		}
+
+		public void BpmHalf()
+		{
+			ProjectJson.Track.BpmHalf();
+			MultZoom(2);
+			Invalidate();
+			RefreshBpmLabel();
 		}
 	}
 }

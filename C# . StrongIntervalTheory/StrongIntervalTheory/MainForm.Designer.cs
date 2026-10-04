@@ -40,6 +40,8 @@
 			this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openMidiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+			this.BpmLabel = new System.Windows.Forms.Label();
+			this.button1 = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -102,7 +104,7 @@
             this.fileToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
 			this.menuStrip1.TabIndex = 6;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -118,14 +120,14 @@
 			// openProjectToolStripMenuItem
 			// 
 			this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
-			this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+			this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.openProjectToolStripMenuItem.Text = "Open Project";
 			this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
 			// 
 			// openMidiToolStripMenuItem
 			// 
 			this.openMidiToolStripMenuItem.Name = "openMidiToolStripMenuItem";
-			this.openMidiToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+			this.openMidiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.openMidiToolStripMenuItem.Text = "Open Midi";
 			this.openMidiToolStripMenuItem.Click += new System.EventHandler(this.openMidiToolStripMenuItem_Click);
 			// 
@@ -134,11 +136,34 @@
 			this.openFileDialog2.FileName = "openFileDialog2";
 			this.openFileDialog2.Filter = "midi files|*.mid|midi files|*.midi";
 			// 
+			// BpmLabel
+			// 
+			this.BpmLabel.AutoSize = true;
+			this.BpmLabel.BackColor = System.Drawing.Color.White;
+			this.BpmLabel.ForeColor = System.Drawing.Color.Black;
+			this.BpmLabel.Location = new System.Drawing.Point(689, 35);
+			this.BpmLabel.Name = "BpmLabel";
+			this.BpmLabel.Size = new System.Drawing.Size(10, 13);
+			this.BpmLabel.TabIndex = 7;
+			this.BpmLabel.Text = "-";
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(852, 31);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(119, 23);
+			this.button1.TabIndex = 8;
+			this.button1.Text = "BPM, Time signature";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click_1);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 672);
+			this.ClientSize = new System.Drawing.Size(1264, 681);
+			this.Controls.Add(this.button1);
+			this.Controls.Add(this.BpmLabel);
 			this.Controls.Add(this.PianoCheckBox);
 			this.Controls.Add(this.PauseButton);
 			this.Controls.Add(this.StopButton);
@@ -173,6 +198,8 @@
 		private System.Windows.Forms.ToolStripMenuItem openProjectToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem openMidiToolStripMenuItem;
 		private System.Windows.Forms.OpenFileDialog openFileDialog2;
+		private System.Windows.Forms.Label BpmLabel;
+		private System.Windows.Forms.Button button1;
 	}
 }
 

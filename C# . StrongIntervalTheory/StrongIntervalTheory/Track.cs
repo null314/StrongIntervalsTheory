@@ -13,43 +13,56 @@ namespace StrongIntervalTheoryLib
 		public int BarCount = 16;
 		public int BeatPerBar = 4;
 
+		public TempoMetaMidiEvent TempoMetaMidiEvent;
+
 		public readonly List<NoteInstance> NoteList = new List<NoteInstance>();
 		public readonly List<Interval> IntervalList = new List<Interval>();
 		public readonly MidiSequence Midi;
 
 		public int TickByBar;
+		public int TickByBeat;
 
 		public float Bpm;
 		public float Bps;
 
 		public float Rating = 0.5f;
 
+		private int FirstNote;
+		private float BpmMult = 1;
+
+		public int StartBeatShift = 0;
 
 		public Track(MidiSequence midi, int firstNote)
 		{
+			FirstNote = firstNote;
 			Midi = midi;
 
-			Init();
+			InitBpb();
+			InitBpm();
 			GenNoteList();
 			GenSymbolList(firstNote);
 			GetQuality();
 		}
 
-		private void Init()
+		private void InitBpb()
 		{
 			var timeSignatureMetaMidiEvent = Midi.Tracks[0].Events.First(e => e is TimeSignatureMetaMidiEvent) as TimeSignatureMetaMidiEvent;
-			var tempoMetaMidiEvent = Midi.Tracks[0].Events.First(e => e is TempoMetaMidiEvent) as TempoMetaMidiEvent;
-
+			TempoMetaMidiEvent = Midi.Tracks[0].Events.First(e => e is TempoMetaMidiEvent) as TempoMetaMidiEvent;
 			BeatPerBar = (int)timeSignatureMetaMidiEvent.Numerator;
+		}
 
-			TickByBar = BeatPerBar * Midi.TicksPerBeatOrFrame /*/ timeSignatureMetaMidiEvent.Denominator*/;
+		private void InitBpm()
+		{
+			TickByBar = (int)(BeatPerBar * Midi.TicksPerBeatOrFrame / BpmMult) /*/ timeSignatureMetaMidiEvent.Denominator*/;
+			TickByBeat = (int)(Midi.TicksPerBeatOrFrame / BpmMult);
 
-			Bpm = 60000000.0f / tempoMetaMidiEvent.Value;
-			Bps = 1000000.0f / tempoMetaMidiEvent.Value;
+			Bpm = 60000000.0f / TempoMetaMidiEvent.Value * BpmMult;
+			Bps = 1000000.0f / TempoMetaMidiEvent.Value * BpmMult;
 		}
 
 		private void GenNoteList()
 		{
+			NoteList.Clear();
 			var activeNoteList = new List<NoteInstance>();
 
 			var prevNote = default(NoteInstance);
@@ -91,7 +104,7 @@ namespace StrongIntervalTheoryLib
 				}
 			}
 
-			BarCount = NoteList.Any() ? ((int)NoteList.Last().GetEndBar(TickByBar)) + 1 : 4;
+			BarCount = NoteList.Any() ? ((int)NoteList.Last().GetEndBeat(TickByBeat) * BeatPerBar) + 1 : 4;
 			var endTicks = BarCount * TickByBar;
 			foreach (var n in NoteList)
 				if (n.EndTickVirtual == long.MaxValue)
@@ -100,13 +113,14 @@ namespace StrongIntervalTheoryLib
 
 		private void GenSymbolList(int firstNote)
 		{
+			IntervalList.Clear();
 			var lastBar = firstNote >= 0 ? 0 : -1;
 			var lastNote = firstNote;
 
 			foreach (var n in NoteList)
 			{
 				var bar = n.GetBar(TickByBar);
-				if (n.IsStrong(TickByBar))
+				if (n.IsStrong(TickByBeat, StartBeatShift, BeatPerBar))
 				{
 					if (lastBar >= 0)
 					{
@@ -176,5 +190,59 @@ namespace StrongIntervalTheoryLib
 		}
 
 
+		public void SignatureDouble()
+		{
+			BeatPerBar *= 2;
+			InitAll();
+		}
+
+		public void SignatureHalf()
+		{
+			if (BeatPerBar % 2 == 0)
+			{
+				BeatPerBar /= 2;
+				if (StartBeatShift >= BeatPerBar)
+					StartBeatShift = 0;
+				InitAll();
+			}
+		}
+
+		public void BpmDouble()
+		{
+			BpmMult *= 2;
+			InitAll();
+		}
+
+		public void BpmHalf()
+		{
+			BpmMult /= 2;
+			InitAll();
+		}
+
+		public void InitAll()
+		{
+			InitBpm();
+			GenNoteList();
+			GenSymbolList(FirstNote);
+			GetQuality();
+		}
+
+		public void ShiftRight()
+		{
+			if (StartBeatShift < BeatPerBar - 1)
+			{
+				StartBeatShift++;
+				InitAll();
+			}
+		}
+
+		public void ShiftLeft()
+		{
+			if (StartBeatShift > 0)
+			{
+				StartBeatShift--;
+				InitAll();
+			}
+		}
 	}
 }

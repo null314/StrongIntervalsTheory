@@ -9,31 +9,33 @@
 		public int Note;
 
 
-		public float GetStartBar(int tickByBar)
+		public float GetStartBeat(int tickByBeat)
 		{
-			return (float)StartTick / tickByBar;
+			return (float)StartTick / tickByBeat;
 		}
 
-		public float GetEndBar(int tickByBar)
+		public float GetEndBeat(int tickByBeat)
 		{
-			return (float) EndTick / tickByBar;
+			return (float)EndTick / tickByBeat;
 		}
 
-		public float GetEndVirtualBar(int tickByBar)
+		public float GetEndVirtualBeat(int tickByBeat)
 		{
-			return (float) EndTickVirtual / tickByBar;
+			return (float)EndTickVirtual / tickByBeat;
 		}
+
 
 		public int GetBar(int tickByBar)
 		{
 			return (int)((StartTick + tickByBar - 1) / tickByBar);
 		}
 
-		public bool IsStrong(int tickByBar)
+		public bool IsStrong(int tickByBeat, int shiftBeat, int beatPerBar)
 		{
-			var barStart = (StartTick-1) / tickByBar;
-			var barEnd = (EndTickVirtual - 1) / tickByBar;
+			var barStart = ((StartTick-1) / tickByBeat + beatPerBar - shiftBeat) / beatPerBar;
+			var barEnd = ((EndTickVirtual - 1) / tickByBeat + beatPerBar - shiftBeat)/ beatPerBar;
 			return barStart < barEnd;
 		}
+
 	}
 }
